@@ -9,7 +9,12 @@
         android:title="Configuraciones"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/itemPerfil"
+        android:title="Mi perfil"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/itemSalir"
         android:title="Cerrar sesión"
         app:showAsAction="never"/>
+
 </menu>

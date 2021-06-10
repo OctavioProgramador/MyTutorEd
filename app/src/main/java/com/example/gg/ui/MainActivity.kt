@@ -18,6 +18,8 @@ import com.example.gg.utils.Constants.SEND_ID
 import com.example.gg.utils.Time
 import android.view.View
 import android.widget.Toolbar
+import com.example.gg.Activity_Profile
+import com.example.gg.activity_login
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -162,6 +164,12 @@ class MainActivity : AppCompatActivity() {
 
                 true
             }
+            R.id.itemPerfil -> {
+                miPerfil()
+
+
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -171,5 +179,10 @@ class MainActivity : AppCompatActivity() {
     private fun LogOut(){
         FirebaseAuth.getInstance().signOut()
         onBackPressed()
+    }
+    private fun miPerfil()
+    {
+        startActivity(Intent(this, Activity_Profile::class.java))
+
     }
 }
