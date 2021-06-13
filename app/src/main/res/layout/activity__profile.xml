@@ -69,6 +69,15 @@
         tools:ignore="OnClick"
         android:layout_marginLeft="15dp"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#42A5F5"
+        android:id="@+id/dark_divider"
+        tools:ignore="MissingConstraints" />
+    <include
+        android:id="@+id/toolbar_profile"
+        layout="@layout/toolbar_profile"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
