@@ -22,4 +22,8 @@
     <string name="configuraciones">Configurations</string>
     <string name="cerrar_sesi_n">Log out</string>
     <string name="cambiar_idioma">Change language</string>
+    <string name="mi_perfil">My profile</string>
+    <string name="guardar">Save</string>
+    <string name="cambiar_idioma_a_ingles">Change to spanish</string>
+    <string name="cambiar_idioma_a_espanol">Change to spanish</string>
 </resources>

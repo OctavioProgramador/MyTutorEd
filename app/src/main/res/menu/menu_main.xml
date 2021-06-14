@@ -9,16 +9,17 @@
         android:title="@string/configuraciones"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/itemPerfil"
+        android:title="@string/mi_perfil"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/itemSalir"
         android:title="@string/cerrar_sesi_n"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/itemIdiomaIng"
-        android:title="Cambiar idioma a ingles"
+        android:id="@+id/itemIdioma"
+        android:title="@string/cambiar_idioma_a_ingles"
         app:showAsAction="never"/>
-    <item
-        android:id="@+id/itemIdiomaEsp"
-        android:title="Cambiar idioma a espanol"
-        app:showAsAction="never"/>
+
 
 </menu>

@@ -22,4 +22,8 @@
     <string name="configuraciones">Configuraciones</string>
     <string name="cerrar_sesi_n">Cerrar sesión</string>
     <string name="cambiar_idioma">Cambiar idioma</string>
+    <string name="mi_perfil">Mi perfil</string>
+    <string name="guardar">Guardar</string>
+    <string name="cambiar_idioma_a_ingles">Cambiar idioma a ingles</string>
+    <string name="cambiar_idioma_a_espanol">Cambiar idioma a espanol</string>
 </resources>

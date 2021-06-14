@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.os.LocaleList
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +24,8 @@ import com.example.gg.utils.Constants.OPEN_SEARCH
 import com.example.gg.utils.Constants.RECEIVE_ID
 import com.example.gg.utils.Constants.SEND_ID
 import com.example.gg.utils.Time
+import com.example.gg.Activity_Profile
+import com.example.gg.activity_login
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
@@ -43,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         // Set the toolbar as support action bar
         setSupportActionBar(toolbar as androidx.appcompat.widget.Toolbar?)
 
-        loadLocate()
+        //loadLocate()
         recyclerView()
 
         clickEvents()
@@ -168,12 +171,14 @@ class MainActivity : AppCompatActivity() {
                 LogOut()
                 true
             }
-            R.id.itemIdiomaEsp -> {
-                CambiarIdiomaEsp()
+            R.id.itemIdioma -> {
+                CambiarIdioma()
                 true
             }
-            R.id.itemIdiomaIng -> {
-                CambiarIdiomaIngles()
+            R.id.itemPerfil -> {
+                miPerfil()
+
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -181,13 +186,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    private fun CambiarIdiomaIngles() {
-        setLocate("en")
+    private fun CambiarIdioma() {
+        //val idioma = Configuration().locale.toString()
+        val idioma = Locale.getDefault().language
+        // Toast.makeText(this, idioma, Toast.LENGTH_LONG).show()
+
+        if (idioma == "es") {
+            setLocate("en")
+            recreate()
+        }else
+        {
+            setLocate("es")
+            recreate()
+        }
     }
 
-    private fun CambiarIdiomaEsp(){
-        setLocate("es")
-    }
 
     private fun setLocate(lang: String?){
         val locale = Locale(lang)
@@ -210,6 +223,12 @@ class MainActivity : AppCompatActivity() {
     //Funcion que gestiona el logout
     private fun LogOut(){
         FirebaseAuth.getInstance().signOut()
-        onBackPressed()
+        //onBackPressed()
+        startActivity(Intent(this, activity_login::class.java))
+    }
+    private fun miPerfil()
+    {
+        startActivity(Intent(this, Activity_Profile::class.java))
+
     }
 }

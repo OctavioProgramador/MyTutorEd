@@ -8,6 +8,8 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import android.text.InputType
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 
@@ -16,6 +18,7 @@ class activity_login : AppCompatActivity() {
     //Declaración
     private lateinit var txtEmail: EditText
     private lateinit var txtPassword: EditText
+    private lateinit var  checkBox: CheckBox
 
     private lateinit var auth: FirebaseAuth
 
@@ -26,6 +29,21 @@ class activity_login : AppCompatActivity() {
         txtEmail=findViewById(R.id.txtEmail)
         txtPassword=findViewById(R.id.txtPassword)
         auth= FirebaseAuth.getInstance()
+        checkBox=findViewById(R.id.checkBox)
+
+        //llamamos metodo onclick
+        checkBox.setOnCheckedChangeListener({buttonView,isChecked ->
+            if(isChecked){
+                //si es seleccionado
+                txtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)
+            }else{
+                //sino
+                txtPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)
+            }
+
+        })
+
+
     }
     //si el usuario da click a olvide contraseña
     fun forgotPassword(view: View)
