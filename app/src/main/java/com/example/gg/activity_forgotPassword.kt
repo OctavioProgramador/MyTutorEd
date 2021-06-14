@@ -64,5 +64,6 @@ class activity_forgotPassword : AppCompatActivity() {
 
     fun login(view: View) {
         startActivity(Intent(this,activity_login::class.java))
+        finish()
     }
 }

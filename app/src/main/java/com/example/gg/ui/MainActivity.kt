@@ -1,5 +1,6 @@
 package com.example.gg.ui
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         // Set the toolbar as support action bar
         setSupportActionBar(toolbar as androidx.appcompat.widget.Toolbar?)
 
-
+        loadLocate()
         recyclerView()
 
         clickEvents()
@@ -181,21 +182,29 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun CambiarIdiomaIngles() {
-        //super.attachBaseContext(MyContextWrapper.wrap(baseContext, "en"))
-        //val context: Context? = MyContextWrapper.wrap(this /*in fragment use getContext() instead of this*/, "en")
-        //resources.updateConfiguration(context!!.resources.configuration, context!!.resources.displayMetrics)
-        val overrideConfiguration: Configuration = baseContext.resources.configuration
-        overrideConfiguration.setLocale(Locale("es"))
-        val context = createConfigurationContext(overrideConfiguration)
-        val resources: Resources = context.resources
-        resources.configuration.updateFrom(overrideConfiguration)
+        setLocate("en")
     }
 
     private fun CambiarIdiomaEsp(){
+        setLocate("es")
     }
 
+    private fun setLocate(lang: String?){
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+        val editor = getSharedPreferences("Settings", Context.MODE_PRIVATE).edit()
+        editor.putString("My_Lang", lang)
+        editor.apply()
+    }
 
-
+    private fun loadLocate(){
+        val sharedPreferences = getSharedPreferences("Settigns", Activity.MODE_PRIVATE)
+        val language = sharedPreferences.getString("My_Lang", "")
+        setLocate(language)
+    }
 
 
     //Funcion que gestiona el logout
