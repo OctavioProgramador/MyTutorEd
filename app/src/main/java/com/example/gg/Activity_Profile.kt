@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity__profile.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.profile_toolbar.*
 
 class Activity_Profile : AppCompatActivity() {
 
@@ -19,6 +21,7 @@ class Activity_Profile : AppCompatActivity() {
    private lateinit var txtUsename: EditText
     private lateinit var txtLastName: EditText
     private lateinit var txtEmail: EditText
+
     //  private lateinit var txtPassword: EditText
     //private lateinit var progressBar: ProgressBar
     var dbReference: DatabaseReference?=null
@@ -35,19 +38,9 @@ class Activity_Profile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity__profile)
 
-        // Set the toolbar as support action bar
-        //setSupportActionBar(toolbar as androidx.appcompat.widget.Toolbar?)
-        //setSupportActionBar(toolbar as Toolbar?)
-        //supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        // Set the toolbar as support action bar
-        //setSupportActionBar(toolbar as androidx.appcompat.widget.Toolbar?)
-        //setSupportActionBar(toolbar as Toolbar?)
-        // Mostrar boton regresar en la toolbar
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-
-
+        back.setOnClickListener {
+            onBackPressed()
+        }
 
         database= FirebaseDatabase.getInstance() //Instancia para BD
         auth= FirebaseAuth.getInstance() //Instancia para la autenticación
@@ -57,14 +50,7 @@ class Activity_Profile : AppCompatActivity() {
         val user=auth.currentUser
         val userreference=dbReference?.child(user?.uid!!)
 
-
-
-
         mostrar()
-
-
-
-
 
 
     }

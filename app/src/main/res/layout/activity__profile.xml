@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Activity_Profile">
 
     <LinearLayout
@@ -76,8 +77,8 @@
         android:id="@+id/dark_divider"
         tools:ignore="MissingConstraints" />
     <include
-        android:id="@+id/toolbar_profile"
-        layout="@layout/toolbar_profile"/>
+        android:id="@+id/toolbar_perfil"
+        layout="@layout/profile_toolbar"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
