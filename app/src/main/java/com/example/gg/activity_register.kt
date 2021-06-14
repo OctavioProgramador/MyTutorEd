@@ -3,8 +3,10 @@ package com.example.gg
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.text.TextUtils
 import android.view.View
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -28,6 +30,7 @@ class activity_register : AppCompatActivity() {
     private lateinit var dbReference: DatabaseReference
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
+    private lateinit var  checkBox: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +41,7 @@ class activity_register : AppCompatActivity() {
         txtLastName=findViewById(R.id.txtLastName)
         txtEmail=findViewById(R.id.txtEmail)
         txtPassword=findViewById(R.id.txtPassword)
+        checkBox=findViewById(R.id.checkBox)
 
         //progressBar= ProgressBar(this)
 
@@ -45,6 +49,19 @@ class activity_register : AppCompatActivity() {
         auth= FirebaseAuth.getInstance() //Instancia para la autenticación
 
         dbReference=database.reference.child("User") //Referencia para leer o escribir en una ubicación en la BD
+
+
+        //llamamos metodo onclick
+        checkBox.setOnCheckedChangeListener({buttonView,isChecked ->
+            if(isChecked){
+                //si es seleccionado
+                txtPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)
+            }else{
+                //sino
+                txtPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)
+            }
+
+        })
 
     }
 
