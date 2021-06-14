@@ -28,7 +28,7 @@
             android:layout_height="69dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="BIENVENIDO"
+            android:text="@string/bienvenido"
             android:textColor="#FAF8F8"
             android:textSize="42sp"
             android:textStyle="bold" />
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="66dp"
-            android:text="Soy Ed y seré tu tutor virtual 24/7."
+            android:text="@string/soy_ed_y_ser_tu_tutor_virtual_24_7"
             android:textColor="#FAF8F8" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_blue_ocean"
             android:onClick="register"
-            android:text="Registrarse"
+            android:text="@string/registrarse"
             android:textColor="#FAF8F8"
             android:textStyle="bold"
             app:backgroundTint="@color/colorBlueOcean" />
@@ -64,7 +64,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_blue_ocean"
             android:onClick="login"
-            android:text="Iniciar Sesión"
+            android:text="@string/inicia_sesi_n"
             android:textColor="#FAF8F8"
             android:textStyle="bold"
             app:backgroundTint="@color/colorBlueOcean" />

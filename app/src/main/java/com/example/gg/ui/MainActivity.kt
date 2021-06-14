@@ -1,12 +1,18 @@
 package com.example.gg.ui
 
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
+import android.os.LocaleList
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gg.R
 import com.example.gg.data.Message
@@ -16,18 +22,18 @@ import com.example.gg.utils.Constants.OPEN_SEARCH
 import com.example.gg.utils.Constants.RECEIVE_ID
 import com.example.gg.utils.Constants.SEND_ID
 import com.example.gg.utils.Time
-import android.view.View
-import android.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var  adapter: MessagingAdapter
     // Nombres a los que el bot se identifica
     private var botList = listOf("Ed", "Profesor Ed", "Super Ed", "Mr. Ed")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             GlobalScope.launch {
                 delay(1000)
                 withContext(Dispatchers.Main){
-                    rv_messages.scrollToPosition(adapter.itemCount-1)
+                    rv_messages.scrollToPosition(adapter.itemCount - 1)
                 }
 
             }
@@ -77,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             et_message.setText("")
 
             adapter.insertMessage(Message(message, SEND_ID, timeStamp))
-            rv_messages.scrollToPosition(adapter.itemCount-1)
+            rv_messages.scrollToPosition(adapter.itemCount - 1)
 
             botResponse(message)
         }
@@ -95,9 +101,9 @@ class MainActivity : AppCompatActivity() {
 
                 val response = BotResponse.basicResponse(message)
 
-                adapter.insertMessage(Message(response,RECEIVE_ID, timeStamp))
+                adapter.insertMessage(Message(response, RECEIVE_ID, timeStamp))
 
-                rv_messages.scrollToPosition(adapter.itemCount-1)
+                rv_messages.scrollToPosition(adapter.itemCount - 1)
 
                 when (response) {
                     OPEN_GOOGLE -> {
@@ -124,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             delay(1000)
             withContext(Dispatchers.Main){
-                rv_messages.scrollToPosition(adapter.itemCount-1)
+                rv_messages.scrollToPosition(adapter.itemCount - 1)
             }
         }
     }
@@ -136,19 +142,20 @@ class MainActivity : AppCompatActivity() {
                 val timeStamp = Time.timeStamp()
                 adapter.insertMessage(Message(message, RECEIVE_ID, timeStamp))
 
-                rv_messages.scrollToPosition(adapter.itemCount-1)
+                rv_messages.scrollToPosition(adapter.itemCount - 1)
             }
         }
     }
 
     // Damos permisos para implementar menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main,menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
 
         return super.onCreateOptionsMenu(menu)
     }
 
     // Definimos que hace cada opcion del menu
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
@@ -158,13 +165,37 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.itemSalir -> {
                 LogOut()
-
-
+                true
+            }
+            R.id.itemIdiomaEsp -> {
+                CambiarIdiomaEsp()
+                true
+            }
+            R.id.itemIdiomaIng -> {
+                CambiarIdiomaIngles()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun CambiarIdiomaIngles() {
+        //super.attachBaseContext(MyContextWrapper.wrap(baseContext, "en"))
+        //val context: Context? = MyContextWrapper.wrap(this /*in fragment use getContext() instead of this*/, "en")
+        //resources.updateConfiguration(context!!.resources.configuration, context!!.resources.displayMetrics)
+        val overrideConfiguration: Configuration = baseContext.resources.configuration
+        overrideConfiguration.setLocale(Locale("es"))
+        val context = createConfigurationContext(overrideConfiguration)
+        val resources: Resources = context.resources
+        resources.configuration.updateFrom(overrideConfiguration)
+    }
+
+    private fun CambiarIdiomaEsp(){
+    }
+
+
+
 
 
     //Funcion que gestiona el logout

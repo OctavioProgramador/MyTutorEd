@@ -7,12 +7,8 @@ import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuth
 import android.text.TextUtils
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
 class activity_forgotPassword : AppCompatActivity() {
 

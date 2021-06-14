@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">GG</string>
+    <string name="enviar">Send</string>
+    <string name="escribe_un_mensaje">Write a message...</string>
+    <string name="contrase_a">Password</string>
+    <string name="olvide_mi_contrase_a">Forgot password</string>
+    <string name="iniciar_sesi_n">Login</string>
+    <string name="ya_tienes_una_cuenta">Do you have an account?</string>
+    <string name="registrate">Register</string>
+    <string name="atr_s">Back</string>
+    <string name="has_olvidado_tu_contrase_a_suele_pasar_te_enviare_un_enlace_para_que_puedas_restablecerla">Have you forgotten your password? no worry, I will send you a link to restablish it</string>
+    <string name="nombre">First name</string>
+    <string name="apellido">Last name</string>
+    <string name="registarse">Sign In</string>
+    <string name="inicia_sesi_n">Login</string>
+    <string name="bienvenido">WELCOME</string>
+    <string name="soy_ed_y_ser_tu_tutor_virtual_24_7">I am Ed, I wil be your virtual tutor 24/7</string>
+    <string name="registrarse">Sign in</string>
+    <string name="en_linea">On line</string>
+    <string name="identificate">LOGIN HERE</string>
+    <string name="configuraciones">Configurations</string>
+    <string name="cerrar_sesi_n">Log out</string>
+    <string name="cambiar_idioma">Change language</string>
+</resources>

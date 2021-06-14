@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".activity_register">
         </activity>
+
         <activity
             android:name=".ActivityWelcome"
             android:label="MyTutorEd">

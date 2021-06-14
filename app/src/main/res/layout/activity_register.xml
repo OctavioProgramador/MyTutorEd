@@ -24,7 +24,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REGISTRATE"
+            android:text="@string/registrate"
             android:textColor="@color/colorBlue"
             android:textSize="36sp"
             android:textStyle="bold"
@@ -35,7 +35,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginTop="40dp"
-            android:hint="Nombre"
+            android:hint="@string/nombre"
             android:layout_marginLeft="15dp"/>
 
         <EditText
@@ -43,7 +43,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
-            android:hint="Apellido"
+            android:hint="@string/apellido"
             android:layout_marginLeft="15dp"/>
 
 
@@ -52,7 +52,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
-            android:hint="E-mail"
+            android:hint="@string/e_mail"
             android:inputType="textEmailAddress"
             android:layout_marginLeft="15dp" />
 
@@ -62,7 +62,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
-            android:hint="Contraseña"
+            android:hint="@string/contrase_a"
             android:inputType="textPassword"
             android:layout_marginLeft="15dp"/>
 
@@ -73,7 +73,7 @@
             android:layout_marginTop="36dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/btn_bg"
-            android:text="Registarse"
+            android:text="@string/registarse"
             android:textColor="#FFF"
             android:textStyle="bold"
             tools:ignore="OnClick"
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="¿Ya tienes una cuenta?"
+                android:text="@string/ya_tienes_una_cuenta"
                 app:layout_constraintEnd_toStartOf="@+id/txtLogin"
                 tools:layout_editor_absoluteY="566dp"
                 />
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
-                android:text="Inicia Sesión"
+                android:text="@string/inicia_sesi_n"
                 android:layout_marginLeft="4dp"
                 android:textColor="@color/colorBlue"
                 tools:layout_editor_absoluteX="193dp"

@@ -24,7 +24,7 @@
             android:layout_weight=".5"
             android:background="@drawable/round_button"
             android:backgroundTint="@android:color/white"
-            android:hint="Escribe un mensaje..."
+            android:hint="@string/escribe_un_mensaje"
             android:padding="10dp"
             android:singleLine="true" />
 
@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:background="@drawable/round_button"
             android:backgroundTint="@color/colorBlue"
-            android:text="Enviar"
+            android:text="@string/enviar"
             android:textColor="@android:color/white"
             app:backgroundTint="@color/colorBlueOcean" />
 

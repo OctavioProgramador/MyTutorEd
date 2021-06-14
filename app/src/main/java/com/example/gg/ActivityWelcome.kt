@@ -20,4 +20,5 @@ class ActivityWelcome : AppCompatActivity() {
     {
         startActivity(Intent(this,activity_login::class.java))
     }
+
 }

@@ -12,28 +12,26 @@ object BotResponse {
         val respuesta = 1
         val message = _message.toLowerCase()
 
+        val respuesta1 = "La Ingeniería de Software es una de las ramas de las ciencias de la computación que " +
+                "estudia la creación de software confiable y de calidad, basándose en métodos y "      +
+                "técnicas de ingeniería. Brindando soporte operacional y de mantenimiento, el campo "  +
+                "de estudio de la ingeniería de software.\u200B"
+
+        val respuesta2 =  "Scrum es un marco de trabajo para desarrollo ágil de software que se ha expandido a "     +
+                "otras industrias. Es un proceso en el que se aplican de manera regular un conjunto de "   +
+                "buenas prácticas para trabajar colaborativamente, en equipo y obtener el mejor resultado" +
+                " posible de proyectos"
+
         return when {
             /*Pregunta de ingenieria de software
             *
             * */
 
             // Respuesta 1
-            message.contains("que es la ingenieria de software?") ->{
-                "La Ingeniería de Software es una de las ramas de las ciencias de la computación que " +
-                "estudia la creación de software confiable y de calidad, basándose en métodos y "      +
-                "técnicas de ingeniería. Brindando soporte operacional y de mantenimiento, el campo "  +
-                "de estudio de la ingeniería de software.\u200B"
-
-            }
+            message.contains("que es la ingenieria de software?") ->{ respuesta1 }
 
             //Respuesta 2
-            message.contains("que es scrum?") ->{
-                "Scrum es un marco de trabajo para desarrollo ágil de software que se ha expandido a "     +
-                "otras industrias. Es un proceso en el que se aplican de manera regular un conjunto de "   +
-                "buenas prácticas para trabajar colaborativamente, en equipo y obtener el mejor resultado" +
-                " posible de proyectos"
-
-            }
+            message.contains("que es scrum?") -> { respuesta2 }
 
             //Respuesta 3
             message.contains("que es el desarrollo ágil?" ) ||

@@ -6,10 +6,19 @@
 
     <item
         android:id="@+id/itemConfiguraciones"
-        android:title="Configuraciones"
+        android:title="@string/configuraciones"
         app:showAsAction="never"/>
     <item
         android:id="@+id/itemSalir"
-        android:title="Cerrar sesión"
+        android:title="@string/cerrar_sesi_n"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/itemIdiomaIng"
+        android:title="Cambiar idioma a ingles"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/itemIdiomaEsp"
+        android:title="Cambiar idioma a espanol"
+        app:showAsAction="never"/>
+
 </menu>

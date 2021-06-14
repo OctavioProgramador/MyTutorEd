@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBlueOcean"
     app:title="Ed"
-    app:subtitle="En linea"
+    app:subtitle="@string/en_linea"
     app:titleTextColor="#FFFFFF"
     app:subtitleTextColor="#FFFFFF">
 
