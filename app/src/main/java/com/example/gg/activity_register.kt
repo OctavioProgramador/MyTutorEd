@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.text.TextUtils
+import android.util.Patterns
 import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
@@ -97,8 +98,16 @@ class activity_register : AppCompatActivity() {
                     userDB.child("Nombre").setValue(username)
                     userDB.child("Apellido").setValue(lastname)
                     userDB.child("Email").setValue(email)
-                    //userDB.child("Contraseña").setValue(password)
+                    userDB.child("Contraseña").setValue(password)
                    login()
+                }
+                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                {
+                    txtEmail.setError("Email no válido")
+                }
+                else if(auth.currentUser != null)
+                {
+                    Toast.makeText(this, "Usuario registrado.", Toast.LENGTH_LONG).show()
                 }
                 else
                 {
@@ -110,20 +119,40 @@ class activity_register : AppCompatActivity() {
         }
         else //Hay campos vacios
         {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Error")
-            builder.setMessage("¡Ups! Parece que no haz llenado todos tus datos.")
-            builder.setPositiveButton("OK",null)
-            val dialog:AlertDialog=builder.create()
-            dialog.show()
+
 
             //Muestra en que parte esta el error
-            if(TextUtils.isEmpty(username) && TextUtils.isEmpty(lastname) && TextUtils.isEmpty(email) && TextUtils.isEmpty(password))
+            if(TextUtils.isEmpty(username) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
             {
-                txtUsename.setError("Nombre");
-                txtLastName.setError("Apellido");
-                txtEmail.setError("Email");
-                txtPassword.setError("Contraseña");
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error")
+                builder.setMessage("¡Ups! Parece que no haz llenado todos tus datos")
+                builder.setPositiveButton("OK",null)
+                val dialog:AlertDialog=builder.create()
+                dialog.show()
+                if(TextUtils.isEmpty(username))
+                {
+                    txtUsename.setError("Ingrese nombre")
+                }
+                if(TextUtils.isEmpty(lastname))
+                {
+                    txtLastName.setError("Ingrese apellido")
+                }
+                if(TextUtils.isEmpty(email))
+                {
+                    txtEmail.setError("Ingrese Email")
+                }
+                if(TextUtils.isEmpty(password))
+                {
+                    txtPassword.setError("Ingrese contraseña")
+
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                {
+                    txtEmail.setError("Email no válido")
+
+                }
+
             }
 
         }

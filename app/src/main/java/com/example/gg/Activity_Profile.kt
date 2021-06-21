@@ -123,6 +123,14 @@ class Activity_Profile : AppCompatActivity() {
         else
         {
             Toast.makeText(this, "¡Ups! Parece que no hemos podido guardar los cambios.", Toast.LENGTH_LONG).show()
+            if(TextUtils.isEmpty(username))
+            {
+                txtUsename.setError("Ingrese nombre")
+            }
+            if(TextUtils.isEmpty(lastname))
+            {
+                txtLastName.setError("Ingrese apellido")
+            }
         }
 
 /*

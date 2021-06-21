@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuth
 import android.text.TextUtils
+import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -33,33 +34,32 @@ class activity_forgotPassword : AppCompatActivity() {
                 task ->
 
                 if(task.isSuccessful){
-                    //Mensaje de correo enviado
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Aviso")
-                    builder.setMessage("Te he enviado un correo electrónico.")
-                    builder.setPositiveButton("OK",null)
-                    val dialog:AlertDialog=builder.create()
-                    dialog.show()
 
-                    // Regresa a la ventana Login
-                   // startActivity(Intent(this,activity_login::class.java))
+                    Toast.makeText(this, "Te he enviado un correo electrónico.", Toast.LENGTH_LONG).show()
                 }
                 else //No se envia Email
                 {
-                    Toast.makeText(this, "Error al enviar Email", Toast.LENGTH_LONG).show()
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Error")
-                    builder.setMessage("¡Ups! Parece que no me es posible comunicarme contigo.")
-                    builder.setPositiveButton("OK",null)
-                    val dialog: AlertDialog =builder.create()
-                    dialog.show()
+
+                    if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                    {
+                        txtEmail.setError("Email no válido")
+                    }
+                    else if(auth.currentUser == null)
+                    {
+                        Toast.makeText(this, "Usuario no registrado.", Toast.LENGTH_LONG).show()
+                    }
+                    else
+                    {
+                        Toast.makeText(this, "¡Ups! No me es posible contactarme contigo.", Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }
         if(TextUtils.isEmpty(email))
         {
-            txtEmail.setError("Email");
+            txtEmail.setError("Ingresar Email");
         }
+
     }
 
     fun login(view: View) {

@@ -26,4 +26,18 @@
     <string name="guardar">Save</string>
     <string name="cambiar_idioma_a_ingles">Change to spanish</string>
     <string name="cambiar_idioma_a_espanol">Change to spanish</string>
+    <string name="Email_no_valido">Invalid email</string>
+    <string name="usuario_no_registrado">Unregistered user</string>
+    <string name="verificar_email_contrase_a">¡Ups! Verify your email and password</string>
+    <string name="ingresa_email">Enter Email</string>
+    <string name="ingresa_contrase_a">Enter password</string>
+    <string name="ingresa_nombre">Enter name</string>
+    <string name="ingresa_apellido">Enter lastname</string>
+    <string name="problemas">¡Ups! We seem to have some problems</string>
+    <string name="faltan_datos">¡Ups! It seems that you have not filled all your data</string>
+    <string name="email_enviado">Email enviado</string>
+    <string name="error_email_enviado">Error al enviar Email</string>
+    <string name="enviar_email">I have sent you an email</string>
+    <string name="fallo_enviar_email">¡Ups! I cannot contact you</string>
+    <string name="mostrar"> Show</string>
 </resources>

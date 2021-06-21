@@ -26,4 +26,20 @@
     <string name="guardar">Guardar</string>
     <string name="cambiar_idioma_a_ingles">Cambiar idioma a ingles</string>
     <string name="cambiar_idioma_a_espanol">Cambiar idioma a espanol</string>
+    <string name="Email_no_valido">Email no válido</string>
+    <string name="usuario_no_registrado">Usuario no registrado</string>
+    <string name="verificar_email_contrase_a">¡Ups! Verifica tu Email y contraseña</string>
+    <string name="ingresa_email">Ingresa Email</string>
+    <string name="ingresa_contrase_a">Ingresa contraseña</string>
+    <string name="ingresa_nombre">Ingresa nombre</string>
+    <string name="ingresa_apellido">Ingresa apellido</string>
+    <string name="problemas">¡Ups! Parece que tenemos algunos problemas</string>
+    <string name="faltan_datos">¡Ups! Parece que no haz llenados todos tus datos</string>
+    <string name="email_enviado">Email enviado</string>
+    <string name="error_email_enviado">Error al enviar Email</string>
+    <string name="enviar_email">Te he enviado un Email</string>
+    <string name="fallo_enviar_email">¡Ups! No me es posible contactarme contigo</string>
+    <string name="mostrar">Mostrar</string>
+
+
 </resources>

@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
 
-                android:text="Olvide mi contraseña"
+                android:text="Olvidé mi contraseña"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 />
