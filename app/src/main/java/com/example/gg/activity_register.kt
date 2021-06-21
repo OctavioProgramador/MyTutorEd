@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.util.*
 
 
 class activity_register : AppCompatActivity() {
@@ -77,7 +78,7 @@ class activity_register : AppCompatActivity() {
         val lastname:String=txtLastName.text.toString()
         val email:String=txtEmail.text.toString()
         val password:String=txtPassword.text.toString()
-
+        val idioma = Locale.getDefault().language
         // Confirmamos que los campos no esten vacios
         if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(lastname) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(
                 password
@@ -85,7 +86,6 @@ class activity_register : AppCompatActivity() {
         {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){ // Registro con Email y Contraseña
                     task ->
-
                 if(task.isSuccessful) //Se registro correctamente
                 {
                     val user:FirebaseUser?=auth.currentUser //puede que tenga valor nulo
@@ -103,77 +103,112 @@ class activity_register : AppCompatActivity() {
                 }
                 else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
                 {
-                    txtEmail.setError("Email no válido")
+                    if (idioma == "es") {
+                        txtEmail.setError("Email no válido")
+                    }else{
+                        txtEmail.setError("Not valid Email")
+                    }
                 }
                 else if(auth.currentUser != null)
                 {
-                    Toast.makeText(this, "Usuario registrado.", Toast.LENGTH_LONG).show()
+                    if (idioma == "es") {
+                        Toast.makeText(this, "Usuario registrado.", Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(this, "User registered.", Toast.LENGTH_LONG).show()
+                    }
                 }
                 else
                 {
-                    Toast.makeText(this, "¡Ups! Parece que tenemos algunos problemas.", Toast.LENGTH_LONG).show()
+                    if (idioma == "es") {
+                        Toast.makeText(this, "¡Ups! Parece que tenemos algunos problemas.", Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(this, "Ups! It seems we have some problems.", Toast.LENGTH_LONG).show()
+                    }
                 }
-
             }
-
         }
         else //Hay campos vacios
         {
-
-
             //Muestra en que parte esta el error
             if(TextUtils.isEmpty(username) || TextUtils.isEmpty(lastname) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
             {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Error")
-                builder.setMessage("¡Ups! Parece que no haz llenado todos tus datos")
+                if(idioma == "es"){
+                    builder.setMessage("¡Ups! Parece que no haz llenado todos tus datos")
+                }else{
+                    builder.setMessage("Ups! It seems that you have not filled all your data.")
+                }
                 builder.setPositiveButton("OK",null)
                 val dialog:AlertDialog=builder.create()
                 dialog.show()
                 if(TextUtils.isEmpty(username))
                 {
-                    txtUsename.setError("Ingrese nombre")
+                    if(idioma == "es") {
+                        txtUsename.setError("Ingrese nombre")
+                    }else{
+                        txtUsename.setError("Enter name")
+                    }
                 }
                 if(TextUtils.isEmpty(lastname))
                 {
-                    txtLastName.setError("Ingrese apellido")
+                    if(idioma == "es") {
+                        txtLastName.setError("Ingrese apellido")
+                    }else{
+                        txtLastName.setError("Enter last name")
+                    }
                 }
                 if(TextUtils.isEmpty(email))
                 {
-                    txtEmail.setError("Ingrese Email")
+                    if(idioma == "es") {
+                        txtEmail.setError("Ingrese Email")
+                    }else{
+                        txtEmail.setError("Enter Email")
+                    }
                 }
                 if(TextUtils.isEmpty(password))
                 {
-                    txtPassword.setError("Ingrese contraseña")
-
+                    if(idioma == "es") {
+                        txtPassword.setError("Ingrese contraseña")
+                    }else{
+                        txtPassword.setError("Enter password")
+                    }
                 }
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
                 {
-                    txtEmail.setError("Email no válido")
-
+                    if(idioma == "es") {
+                        txtEmail.setError("Email no válido")
+                    }else{
+                        txtEmail.setError("Not valid Email")
+                    }
                 }
-
             }
-
         }
-
     }
     // Si se registro correctamente abre Login
     private fun login()
     {
         startActivity(Intent(this, activity_login::class.java))
-
     }
     // Verificar Email
     private  fun verificarEmail(user: FirebaseUser?)
     {
+        val idioma = Locale.getDefault().language
         user?.sendEmailVerification()?.addOnCompleteListener(this)
         { task ->
             if(task.isSuccessful)
             {
-                Toast.makeText(this, "Email enviado", Toast.LENGTH_LONG).show()
+                if(idioma == "es") {
+                    Toast.makeText(this, "Email enviado", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this, "Email sendend", Toast.LENGTH_LONG).show()
+                }
             }else{
-                Toast.makeText(this, "Error al enviar Email", Toast.LENGTH_LONG).show()
+                if(idioma == "es") {
+                    Toast.makeText(this, "Error al enviar Email", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this, "Error sending Email", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }

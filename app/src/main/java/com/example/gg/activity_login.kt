@@ -16,6 +16,7 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.ActionCodeEmailInfo
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 
 class activity_login : AppCompatActivity() {
@@ -73,7 +74,7 @@ class activity_login : AppCompatActivity() {
     private fun loginUser() {
         val email: String = txtEmail.text.toString()
         val password: String = txtPassword.text.toString()
-
+        val idioma = Locale.getDefault().language
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
 
@@ -82,11 +83,19 @@ class activity_login : AppCompatActivity() {
                 } else { //usuario no registrado
 
                     if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                        txtEmail.setError("Email no válido")
+                        if(idioma == "es") {
+                            txtEmail.setError("Email no válido")
+                        }else{
+                            txtEmail.setError("Invalid Email")
+                        }
                     }
                     else if(auth.currentUser == null)
                     {
-                        Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_LONG).show()
+                        if (idioma == "es") {
+                            Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_LONG).show()
+                        }else{
+                            Toast.makeText(this, "Unregistered User", Toast.LENGTH_LONG).show()
+                        }
 
                     }
                     else {
@@ -97,57 +106,65 @@ class activity_login : AppCompatActivity() {
                         builder.setPositiveButton("OK", null)
                         val dialog: AlertDialog = builder.create()
                         dialog.show()*/
-                        Toast.makeText(this, "¡Ups! Verifica tu Email y contraseña", Toast.LENGTH_LONG).show()
-
+                            if(idioma == "es") {
+                                Toast.makeText(this, "¡Ups! Verifica tu Email y contraseña", Toast.LENGTH_LONG).show()
+                            }else{
+                                Toast.makeText(this, "Ups! verify your email and password", Toast.LENGTH_LONG).show()
+                            }
                     }
-
                 }
             }
 
         } else // Si hay campos vacios
         {
-
-
             //Muestra en que parte esta el error
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(this, "¡Ups! Parece que no haz llenado todos tus datos", Toast.LENGTH_LONG).show()
+                if (idioma == "es") {
+                    Toast.makeText(this, "¡Ups! Parece que no has llenado todos tus datos", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this, "Ups! It seems that you have not filled all the data", Toast.LENGTH_LONG).show()
+                }
                 if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password)) {
-                    txtEmail.setError("Ingresa Email")
-                    txtPassword.setError("Ingresa contraseña")
+                    if (idioma == "es") {
+                        txtEmail.setError("Ingresa Email")
+                        txtPassword.setError("Ingresa contraseña")
+                    }else{
+                        txtEmail.setError("Enter Email")
+                        txtPassword.setError("Enter password")
+                    }
                 }
                 else if (TextUtils.isEmpty(email)) {
-                    txtPassword.setError("Ingresa Email")
+                    if(idioma == "es") {
+                        txtPassword.setError("Ingresa Email")
+                    }else{
+                        txtPassword.setError("Enter Email")
+                    }
                 }
                 else if (TextUtils.isEmpty(password)) {
-                    txtPassword.setError("Ingresa contraseña")
-                    if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
-                    {
-                        txtEmail.setError("Email no válido")
+                    if(idioma == "es") {
                         txtPassword.setError("Ingresa contraseña")
+                        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                            txtEmail.setError("Email no válido")
+                            txtPassword.setError("Ingresa contraseña")
+                        }
+                    }else{
+                        txtPassword.setError("Enter password")
+                        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                            txtEmail.setError("Invalid Email")
+                            txtPassword.setError("Enter password")
+                        }
                     }
                 }
                 else
                 {
 
                 }
-
-
             }
-
             // checking the proper email format
-
-
         }
     }
-
     // Despliega el MainActivity (Chat)
     private fun action() {
         startActivity(Intent(this, MainActivity::class.java))
     }
-
-
-
-
-
-
 }
